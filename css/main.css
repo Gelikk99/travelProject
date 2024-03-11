@@ -1,0 +1,346 @@
+@font-face {
+    font-family: "Cycles";
+    src: url("/fonts/Cycles.ttf");
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/Montserrat-Light.ttf");
+}
+
+body {
+    background-color: rgb(1, 41, 40);
+    font-family: Cycles, sans-serif;
+
+
+}
+
+.main {
+    display: block;
+}
+
+
+.main1 {
+    display: none;
+}
+
+.main,.main1  {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+
+
+
+.main-block {
+    border-radius: 60px;
+    box-shadow: -2px 4px 33px 0 rgba(0, 0, 0, 0.25);
+    background: rgb(2, 55, 53);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 42px 0 42px 0;
+    width: 800px;
+
+    /*margin: 50px auto;*/
+
+
+
+}
+
+
+.logo svg {
+    max-width: 200px;
+    max-height: 200px;
+    margin-bottom: 40px;
+}
+
+.main-block-title {
+    color: rgb(255, 255, 255);
+    font-size: 60px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.main-block-text {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.btn {
+    border-radius: 15px;
+    box-shadow: 45px 97px 148px 0 rgba(0, 0, 0, 0);
+    background: rgba(152, 131, 80, 0.74);
+    width: 90px;
+    padding: 14px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*.btn:hover {*/
+/*    background: #1d49aa;*/
+/*}*/
+
+/*.btn:focus {*/
+/*    outline: none;*/
+/*    box-shadow: 0 0 0 4px #cbd6ee;*/
+/*}*/
+
+.logo1 svg {
+    max-width: 50px;
+    max-height: 50px;
+    margin-bottom: 10px;
+}
+
+.main-block-title1 {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.main-block-text1 {
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/*------------------------------------------*/
+/* Style the form */
+#regForm {
+    background-color: rgba(1, 26, 25, 0.49);
+    border-radius: 60px;
+    padding: 40px;
+    width: 70%;
+    /*min-width: 300px;*/
+    text-align: center;
+    /*margin-bottom: 30px;*/
+}
+
+
+#dataToday {
+    color: white;
+
+    font-family: Montserrat, sans-serif;
+}
+/* Style the input fields */
+input {
+    padding: 10px;
+    border: none;
+    font-size: 17px;
+    border-radius: 60px;
+    background-color: rgba(225, 225, 225, 0.25);
+    color: white;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.44);
+    font-family: Montserrat, sans-serif;
+
+}
+
+input:focus {
+    outline:none;
+    font-family: Montserrat, sans-serif;
+font-weight: bold;
+}
+
+    /* Mark input boxes that gets an error on validation: */
+input.invalid {
+    background-color: #9d1c1c;
+}
+
+/* Hide all steps by default: */
+.tab {
+    display: none;
+}
+
+h2 {
+    color: #988350;
+    font-family: Montserrat, sans-serif;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #988350;
+}
+
+#prevBtn {
+    padding: 10px;
+    border: none;
+    font-size: 17px;
+    border-radius: 60px;
+    background-color: rgba(225, 225, 225, 0.25);
+    color: white;
+    margin-right: 15px;
+}
+
+#nextBtn {
+    padding: 10px;
+    border: none;
+    font-size: 17px;
+    border-radius: 60px;
+    background-color: #988350;
+    color: white;
+}
+
+
+.dni {
+    color: white;
+    font-family: Montserrat, sans-serif;
+}
+
+select {
+    padding: 10px;
+    border: none;
+    font-size: 17px;
+    border-radius: 60px;
+    background-color: rgba(225, 225, 225, 0.25);
+    color: white;
+    font-family: Montserrat, sans-serif;
+    width: 162px;
+
+    -webkit-appearance: none;
+
+
+}
+
+
+
+.duration {
+    position: relative;
+}
+
+.duration svg {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    right: 19px;
+    top: 50%;
+    transform: translateY(-50%);
+    fill: rgba(7, 7, 7, 0.65);
+    pointer-events: none;
+    transition: fill 0.5s;
+}
+
+.duration select:focus + svg {
+    fill: #988350;
+}
+
+
+
+select:focus {
+    outline: none;
+}
+
+option {
+    color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(1, 26, 25, 0.68);
+    border-radius: 20px;
+}
+
+
+.tab-flex {
+    display: flex;
+    justify-content: center;
+}
+
+.date-fly {
+    margin-right: 90px;
+}
+
+.budget {
+    margin-bottom: 30px;
+}
+
+.budget-text {
+    color: white;
+    margin: 0 5px;
+}
+
+#budget-input, #budget-input2 {
+width: 100px;
+}
+
+.typeText {
+    color: rgba(255, 255, 255, 0.71);
+    text-align: left;
+    font-family: Montserrat, sans-serif;
+}
+
+.typeText.dni {
+    margin-top: 10px;
+    color: white;
+}
+
+
+.typeOfRest {
+display: inline-block;
+    margin-bottom: 25px;
+}
+
+
+.check_input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.check_box {
+display: inline-block;
+    width: 13px;
+    height: 13px;
+    background-color: transparent;
+    border: 1px solid #988350;
+    border-radius: 10px;
+    margin-right: 5px;
+    vertical-align: middle;
+
+}
+
+.check_input:checked + .check_box {
+    background-color: #988350;
+
+}
+
+.check {
+    color: rgb(255, 255, 255);
+    text-align: left;
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 15px;
+}
+
+.tab {
+    margin-bottom: 15px;
+}
