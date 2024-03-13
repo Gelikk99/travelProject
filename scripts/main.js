@@ -1,105 +1,236 @@
 
+let currentTab = 0;
+showTab(currentTab);
 
-// Current tab is set to be the first tab (0)
-// Текущая вкладка устанавливается как первая вкладка (0)
-    let currentTab = 0;
-// Display the current tab
-     // Отображение текущей вкладки
-    showTab(currentTab);
+
+let inputArrivedFrom = document.getElementById('arrived-from');
+let inputName = document.getElementById('name');
+let inputArrivedTo = document.getElementsByClassName('arrived-to');
+let inputArrivedToArray = Array.from(inputArrivedTo);
+let inputPeople = document.getElementsByClassName('people');
+let inputPeopleArray = Array.from(inputPeople);
+let inputBudget = document.getElementsByClassName('budget-input');
+let inputBudgetArray = Array.from(inputBudget);
+let inputTel = document.getElementById('tel');
+
+
+
+inputArrivedFrom.onkeydown = (e) => {
+    let number = parseInt(e.key);
+    if (!isNaN(number)) {
+        return false;
+    }
+}
+
+inputName.onkeydown = (e) => {
+    let number = parseInt(e.key);
+    if (!isNaN(number)) {
+        return false;
+    }
+}
+
+inputArrivedToArray.forEach(element => {
+    element.onkeydown = (e) => {
+        let number = parseInt(e.key);
+        if (!isNaN(number)) {
+            return false;
+        }
+    };
+});
+
+inputPeopleArray.forEach(element => {
+    element.onkeydown = (e) => {
+        let number = parseInt(e.key);
+        if (isNaN(number)) {
+            return false;
+        }
+    };
+});
+inputBudgetArray.forEach(element => {
+    element.onkeydown = (e) => {
+        let number = parseInt(e.key);
+        if (isNaN(number)) {
+            return false;
+        }
+    };
+});
+
+inputTel.onkeydown = (e) => {
+    let number = parseInt(e.key);
+    if (isNaN(number)) {
+        return false;
+    }
+}
 
 function showTab(n) {
-    // This function will display the specified tab of the form ...
-    // Эта функция отобразит указанную вкладку формы ...
-    let x = document.getElementsByClassName("tab");
-    x[n].style.display = "block";
-    // ... and fix the Previous/Next buttons:
+    let prevBtn =  document.getElementById("prevBtn");
+    let nextBtn =  document.getElementById("nextBtn");
+    let tab = document.querySelectorAll(".tab");
+    tab[n].style.display = "block";
     if (n === 0) {
-        document.getElementById("prevBtn").style.display = "none";
+        prevBtn.style.display = "none";
     } else {
-        document.getElementById("prevBtn").style.display = "inline";
+        prevBtn.style.display = "inline";
     }
-    if (n === (x.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = "Готово";
+
+    if (n === tab.length - 1) {
+        nextBtn.textContent = "Готово";
     } else {
-        document.getElementById("nextBtn").innerHTML = "→\t";
+        nextBtn.textContent = "→\t";
     }
-    // ... and run a function that displays the correct step indicator:
-    // ...и запустите функцию, которая отображает правильный индикатор шага:
-    fixStepIndicator(n)
+    fixStepIndicator(n);
 }
 
 function nextPrev(n) {
-    // This function will figure out which tab to display
-    // Эта функция определит, какую вкладку отображать.
-    let x = document.getElementsByClassName("tab");
-    // Exit the function if any field in the current tab is invalid:
-    // Выйдите из функции, если какое-либо поле на текущей вкладке недействительно:
+    let tab = document.querySelectorAll(".tab");
+
     if (n === 1 && !validateForm()) return false;
-    // Hide the current tab:
-    // Скрыть текущую вкладку:
-    x[currentTab].style.display = "none";
-    // Increase or decrease the current tab by 1:
-    // Увеличьте или уменьшите текущую вкладку на 1:
+    tab[currentTab].style.display = "none";
     currentTab = currentTab + n;
-    // if you have reached the end of the form... :
-    // если вы достигли конца формы... :
-    if (currentTab >= x.length) {
-        //...the form gets submitted:
-        //...форма отправляется:
+
+    if (currentTab >= tab.length) {
         document.getElementById("regForm").submit();
         return false;
     }
-    // Otherwise, display the correct tab:
-    // В противном случае отобразите правильную вкладку:
     showTab(currentTab);
 }
+document.addEventListener('DOMContentLoaded', function () {
+    const typeOfRestBlock = document.getElementById('type-of-rest');
 
+    if (typeOfRestBlock) { // Проверяем наличие блока с id "type-of-rest"
+        const dniInput = typeOfRestBlock.querySelector('#dni-input');
+        const otherCheckboxes = typeOfRestBlock.querySelectorAll('.check_input:not(#dni-input)');
+
+        dniInput.addEventListener('change', function () {
+            if (dniInput.checked) {
+                otherCheckboxes.forEach(function (checkbox) {
+                    checkbox.checked = false;
+                });
+            }
+        });
+
+        otherCheckboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                if (this.checked) {
+                    dniInput.checked = false;
+                }
+            });
+        });
+    }
+});
 function validateForm() {
-    // This function deals with validation of the form fields
-    // Эта функция занимается валидацией полей формы
     let x, y, i, valid = true;
     x = document.getElementsByClassName("tab");
     y = x[currentTab].getElementsByTagName("input");
-    // A loop that checks every input field in the current tab:
-    // Цикл, который проверяет каждое поле ввода на текущей вкладке:
+
+    let dniInputFound = false;
+    let dniInputSelected = false;
+    let dniInputs = x[currentTab].getElementsByClassName("dni-input");
+
+    if (dniInputs.length > 0) {
+        for (let input of dniInputs) {
+            if (input.value !== "") {
+                dniInputFound = true;
+                if (input.checked || input.selected) {
+                    dniInputSelected = true;
+
+                    break;
+                }
+            }
+        }
+    }
+    clearOtherInputsIfDNISelected();
+    clearDataTodayIfDNISelected();
+
+
     for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].value === "") {
-            // add an "invalid" class to the field:
-            // добавьте к полю класс "недействительный":
+        if (y[i].value === "" && (!dniInputFound || !dniInputSelected)) {
             y[i].className += " invalid";
-            // and set the current valid status to false:
-            // и установите текущее состояние валидности на false:
             valid = false;
         }
     }
-    // If the valid status is true, mark the step as finished and valid:
-    // Если статус valid равен true, отметьте шаг как завершенный и действительный:
+
     if (valid) {
         document.getElementsByClassName("step")[currentTab].className += " finish";
     }
-    return valid; // return the valid status // верните действительный статус
+    return valid;
 }
 
+function clearOtherInputsIfDNISelected() {
+    let dniInputSelected = false;
+    let arrivedToInputs = document.getElementById('arrivedTo').getElementsByTagName('input');
+
+    for (let i = 0; i < arrivedToInputs.length; i++) {
+        let input = arrivedToInputs[i];
+        if (input.classList.contains('dni-input') && (input.checked || input.selected)) {
+            dniInputSelected = true;
+            break;
+        }
+    }
+
+    if (dniInputSelected) {
+        for (let i = 0; i < arrivedToInputs.length; i++) {
+            let input = arrivedToInputs[i];
+            if (!input.classList.contains('dni-input')) {
+                input.value = ''; // Очистка значений
+            }
+        }
+    }
+}
+
+function clearDataTodayIfDNISelected() {
+    let dniInputSelected = false;
+    let datesDurationInputs = document.getElementById('dates_duration').getElementsByTagName('input');
+    let dataTodayInput = document.getElementById('dataToday');
+
+    for (let i = 0; i < datesDurationInputs.length; i++) {
+        let input = datesDurationInputs[i];
+        if (input.classList.contains('dni-input') && (input.checked || input.selected)) {
+            dniInputSelected = true;
+            break;
+        }
+    }
+
+    if (dniInputSelected) {
+        dataTodayInput.value = ''; // Очистка значения
+    }
+}
+
+
 function fixStepIndicator(n) {
-    // This function removes the "active" class of all steps...
-    // Эта функция удаляет класс "активный" из всех шагов...
     let i, x = document.getElementsByClassName("step");
     for (i = 0; i < x.length; i++) {
         x[i].className = x[i].className.replace(" active", "");
     }
-    //... and adds the "active" class to the current step:
-    //... и добавляет "активный" класс к текущему шагу:
     x[n].className += " active";
 }
 
 
 
-let button = document.getElementById("btn");
-let mainBlock = document.getElementById("main");
-let mainBlock1 = document.getElementById("main1");
 
-button.addEventListener('click', function () {
-    mainBlock.style.display = 'none';
-    mainBlock1.style.display = 'block';
+
+document.getElementById('btn').addEventListener('click', function() {
+    // Скрыть кнопку
+    document.getElementById('btn').style.display = 'none';
+
+
+    // Плавно изменить стили логотипа
+    let logo = document.getElementById('logo-svg');
+    logo.style.maxWidth = '100px';
+    logo.style.maxHeight = '100px';
+    logo.style.marginBottom = '10px';
+
+    // Плавно изменить стили заголовка
+    let title = document.getElementById('main-block-title');
+    title.style.color = 'rgb(255, 255, 255)';
+    title.style.fontSize = '25px';
+    title.style.fontWeight = '300';
+    title.style.textAlign = 'center';
+    title.style.marginBottom = '24px';
+
+    // Плавно изменить стили текста
+    let text = document.getElementById('main-block-text');
+    text.style.display = "none";
+
+    document.getElementById('regForm').style.display = 'block';
 });
