@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NATALI TRAVEL</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/adaptive.css">
     <link rel="stylesheet" href="css/animate.min.css">
+
     <script src="scripts/main.js" defer></script>
 </head>
 <body>
@@ -25,14 +27,14 @@
         <div class="btn" id="btn">ПОДОБРАТЬ ТУР</div>
 
 
-        <form id="regForm" action="" class="regForm">
+        <form id="regForm" action="" class="regForm animate__animated animate__backInUp" >
 
-            <div class="tab">
+            <div class="tab animate__animated animate__fadeInUp" id="arrivedFrom">
                 <h2>Откуда вылетаете?</h2>
                 <p><input type="text" id="arrived-from" placeholder="Город" oninput="this.className = ''"></p>
             </div>
 
-            <div class="tab" id="arrivedTo">
+            <div class="tab animate__animated animate__fadeInUp" id="arrivedTo">
                 <h2>Куда летим?</h2>
                 <p><input type="text" class="arrived-to" placeholder="Страна" oninput="this.className = ''"></p>
                 <p><input type="text" class="arrived-to" placeholder="Город" oninput="this.className = ''"></p>
@@ -43,14 +45,14 @@
                 </label>
             </div>
 
-            <div class="tab" id="people">
+            <div class="tab animate__animated animate__fadeInUp" id="people">
                 <h2>Сколько человек?</h2>
                 <p><input  type="text" class="people" placeholder="Взрослые" oninput="this.className = ''"></p>
                 <p><input  type="text" class="people" placeholder="Дети (до 14 лет)" oninput="this.className = ''"></p>
             </div>
 
 
-            <div class="tab" id="dates_duration">
+            <div class="tab animate__animated animate__fadeInUp" id="dates_duration">
                 <div class="tab-flex">
                     <div class="date-fly">
                         <h2>Дата вылета:</h2>
@@ -112,7 +114,7 @@
                 </div>
             </div>
 
-            <div class="tab" id="budget">
+            <div class="tab animate__animated animate__fadeInUp" id="budget">
                 <h2>Бюджет:</h2>
                 <div class="budget">
                     <input type="text" placeholder="от" id="budget-input" class="budget-input" oninput="this.className = ''">
@@ -121,7 +123,7 @@
                 </div>
             </div>
 
-            <div class="tab" id="type-of-rest">
+            <div class="tab animate__animated animate__fadeInUp" id="type-of-rest">
                 <h2>Тип отдыха:</h2>
                 <div class="type-of-rest">
                     <div class="type-text">
@@ -156,10 +158,10 @@
                 </div>
             </div>
 
-            <div class="tab" id="contacts">
+            <div class="tab animate__animated animate__fadeInUp" id="contacts">
                 <h2>Как с вами связаться:</h2>
-                <p><input type="text" id="name" placeholder="Ваше имя" oninput="this.className = ''"></p>
-                <p><input type="tel"  id="tel" placeholder="Ваш номер телефона" oninput="this.className = ''"></p>
+                <p><input type="text" id="name" placeholder="Имя" oninput="this.className = ''"></p>
+                <p><input type="tel"  id="tel" placeholder="Номер телефона" oninput="this.className = ''"></p>
             </div>
 
             <div class="buttons" >

@@ -1,3 +1,5 @@
+
+
 @font-face {
   font-family: "Cycles";
   src: url("/fonts/Cycles.ttf");
@@ -45,9 +47,6 @@ body {
   transition: color 0.7s ease, font-size 0.7s ease, font-weight 0.7s ease, text-align 0.7s ease, margin-bottom 0.7s ease;
 }
 
-#regForm {
-  transition: display 15s ease;
-}
 
 .logo svg {
   max-width: 200px;
@@ -87,15 +86,17 @@ body {
 }
 
 
-
 .regForm {
   background-color: rgba(1, 26, 25, 0.49);
   border-radius: 60px;
   padding: 40px;
   width: 70%;
+  height: 320px;
+  transition: width 0.5s ease;
   text-align: center;
   display: none;
 }
+
 
 .dataToday {
   color: white;
@@ -109,6 +110,7 @@ input {
   border-radius: 60px;
   background-color: rgba(225, 225, 225, 0.25);
   color: white;
+  font-family: "Montserrat", sans-serif;
 }
 
 input::placeholder {
@@ -128,6 +130,17 @@ input.invalid {
 
 .tab {
   display: none;
+}
+
+#arrivedFrom, #budget {
+  padding-top: 40px;
+}
+#dates_duration {
+  padding-top: 30px;
+}
+
+#contacts {
+  padding-top: 20px;
 }
 
 h2 {
@@ -243,7 +256,7 @@ h2 {
 }
 
 #budget-input, #budget-input2 {
-  width: 100px;
+  width: 150px;
 }
 
 .type-text {
@@ -303,4 +316,3 @@ h2 {
   text-align:center;
   margin-top:40px;
 }
-

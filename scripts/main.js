@@ -18,14 +18,14 @@ let inputTel = document.getElementById('tel');
 inputArrivedFrom.onkeydown = (e) => {
     let number = parseInt(e.key);
     if (!isNaN(number)) {
-        return false;
+        e.preventDefault();
     }
 }
 
 inputName.onkeydown = (e) => {
     let number = parseInt(e.key);
     if (!isNaN(number)) {
-        return false;
+        e.preventDefault();
     }
 }
 
@@ -33,7 +33,7 @@ inputArrivedToArray.forEach(element => {
     element.onkeydown = (e) => {
         let number = parseInt(e.key);
         if (!isNaN(number)) {
-            return false;
+            e.preventDefault();
         }
     };
 });
@@ -41,31 +41,35 @@ inputArrivedToArray.forEach(element => {
 inputPeopleArray.forEach(element => {
     element.onkeydown = (e) => {
         let number = parseInt(e.key);
-        if (isNaN(number)) {
-            return false;
+        if (isNaN(number) && e.key !== "Backspace") {
+            e.preventDefault();
         }
     };
 });
 inputBudgetArray.forEach(element => {
     element.onkeydown = (e) => {
         let number = parseInt(e.key);
-        if (isNaN(number)) {
-            return false;
+        if (isNaN(number) && e.key !== "Backspace") {
+            e.preventDefault();
         }
     };
 });
 
 inputTel.onkeydown = (e) => {
     let number = parseInt(e.key);
-    if (isNaN(number)) {
-        return false;
+    if (isNaN(number) && e.key !== "Backspace") {
+        e.preventDefault();
     }
 }
+
+
+
 
 function showTab(n) {
     let prevBtn =  document.getElementById("prevBtn");
     let nextBtn =  document.getElementById("nextBtn");
     let tab = document.querySelectorAll(".tab");
+    let regForm = document.querySelector(".regForm");
     tab[n].style.display = "block";
     if (n === 0) {
         prevBtn.style.display = "none";
@@ -78,7 +82,7 @@ function showTab(n) {
     } else {
         nextBtn.textContent = "→\t";
     }
-    fixStepIndicator(n);
+
 }
 
 function nextPrev(n) {
@@ -194,6 +198,7 @@ function clearDataTodayIfDNISelected() {
     if (dniInputSelected) {
         dataTodayInput.value = ''; // Очистка значения
     }
+
 }
 
 
@@ -204,8 +209,6 @@ function fixStepIndicator(n) {
     }
     x[n].className += " active";
 }
-
-
 
 
 
