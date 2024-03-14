@@ -2,12 +2,12 @@
 
 @font-face {
   font-family: "Cycles";
-  src: url("../fonts/Cycles.woff");
+  src: url("/fonts/Cycles.woff");
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("../fonts/Montserrat-Light.woff");
+  src: url("/fonts/Montserrat-Light.woff");
 }
 
 body {
