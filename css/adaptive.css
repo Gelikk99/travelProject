@@ -63,11 +63,15 @@
     .main-block {
         max-width: 290px;
     }
-    .logo svg {
-        max-width: 70px;
-        max-height: 70px;
-        margin-bottom: 15px;
+    #logo-svg {
+        max-width: 90px !important;
+        max-height: 90px !important;
+        margin-bottom: 15px !important;
     }
+.date-fly h2 {
+    margin-top: 0;
+}
+
 
     .main-block-title {
         font-size: 30px;
@@ -97,17 +101,23 @@
     }
 
     .prevBtn {
-        padding: 15px;
+        padding: 13px;
         font-size: 20px;
     }
 
     .nextBtn {
-        padding: 15px;
+        padding: 13px;
         font-size: 20px;
     }
-
+.steps {
+    margin-top: 20px;
+}
     .buttons {
         margin-top: 24px;
+    }
+
+    #dates_duration {
+        padding-top: 0;
     }
 
 }
