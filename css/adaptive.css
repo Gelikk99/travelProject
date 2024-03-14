@@ -96,5 +96,19 @@
         width: 55px;
     }
 
+    .prevBtn {
+        padding: 15px;
+        font-size: 20px;
+    }
+
+    .nextBtn {
+        padding: 15px;
+        font-size: 20px;
+    }
+
+    .buttons {
+        margin-top: 24px;
+    }
+
 }
 
